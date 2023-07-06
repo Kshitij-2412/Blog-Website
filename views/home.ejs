@@ -1,0 +1,22 @@
+<%- include ./partials/header -%>
+<h1>Home</h1>
+<p><%=startingContent%></p>
+<p>
+  Let us be your trusted source of inspiration, motivation, and intellectual
+  growth. Together, let's embark on a journey of discovery, expand our horizons,
+  and unlock the true potential of our minds. Welcome to Daily Journal, where
+  ideas come to life!
+</p>
+
+<!-- <% for(var i=0;i< newPosts.length ; i++){ %>
+<%    console.log(newPosts[i].title); %>
+<% } %>
+ -->
+
+<% newPosts.forEach(function(post){ %>
+<h1><%=post.title %></h1>
+<p>
+  <%=post.postData.substring(0,100) +"..." %>
+  <a href="/posts/ <%=post.title %>">Read more</a>
+</p>
+<% }) %> <%- include ./partials/footer -%>
