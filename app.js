@@ -1,9 +1,11 @@
 //jshint esversion:6
+require('dotenv').config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 var _ = require("lodash");
+
 
 const homeStartingContent ="Welcome to Daily Journal, where knowledge meets inspiration! Our mission is to provide a platform that ignites your curiosity, fuels your imagination, and empowers you with valuable insights. Our dedicated team of writers and experts covers a wide range of topics, including technology, science, personal development, arts and culture, and more. Immerse yourself in captivating articles that offer deep dives into fascinating subjects, practical tips for enhancing your daily life, and thought-provoking perspectives that challenge the status quo. We believe that learning should be a collaborative experience, so we encourage you to actively engage with our content by leaving comments, sharing your thoughts, and joining the vibrant discussions that take place within our community.";
 
@@ -13,7 +15,8 @@ const contactContent = "We'd love to hear from you! If you have any questions, s
 let posts=[];
 
 const app = express();
-
+const PORT=process.env.PORT || 3000;
+// const port=8000
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -71,6 +74,6 @@ app.get("/posts/:topic",function(req,res){
 
 
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen(PORT, function() {
+  console.log("Server started "+PORT);
 });
